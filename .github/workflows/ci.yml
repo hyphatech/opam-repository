@@ -1,0 +1,57 @@
+# Lints and installs every version a change adds; a release/ branch,
+# pushed by a library's release workflow, then lands on main.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: ["release/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: "5.5"
+      - name: Add this checkout ahead of opam's repository
+        run: opam repo add hypha "$GITHUB_WORKSPACE" --rank=1
+      - name: Lint and install what the change adds
+        run: |
+          base=$(git merge-base origin/main HEAD 2>/dev/null || git rev-list --max-parents=0 HEAD)
+          files=$(git diff --name-only --diff-filter=AM "$base" HEAD -- 'packages/*/*/opam')
+          if [ -z "$files" ]; then echo "No version added."; exit 0; fi
+          for f in $files; do opam lint "$f"; done
+          versions=$(for f in $files; do basename "$(dirname "$f")"; done)
+          opam install -y $versions
+
+  land:
+    needs: check
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      # Releases of two libraries land at once; each retries on the other's push.
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              git push origin --delete "$GITHUB_REF_NAME"
+              exit 0
+            fi
+            sleep $((attempt * 5))
+          done
+          exit 1
