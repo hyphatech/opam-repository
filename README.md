@@ -21,6 +21,7 @@ switch made later. `opam update hypha` fetches releases published since.
 | `rowtype`, `rowtype-postgres`, `rowtype-migrate` | [Rowtype](https://github.com/hyphatech/rowtype): typed Postgres queries, with migrations built in |
 | `postgres-eio` | [postgres-eio](https://github.com/hyphatech/postgres-eio): a native Postgres driver |
 | `spool` | [Spool](https://github.com/hyphatech/spool): a durable job queue in your own Postgres |
+| `solidtype`, `ppx_solidtype`, `solidtype-kobalte` | [solidtype](https://github.com/hyphatech/solidtype): OCaml front ends on Solid and Kobalte, compiled by Melange |
 
 ## How a release arrives
 
