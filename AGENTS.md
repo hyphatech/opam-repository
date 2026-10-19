@@ -45,13 +45,6 @@ tree at `main`.
 
 ## Git
 
-How work becomes a commit -- its format, where it happens, what is pushed
--- is [GIT.md](GIT.md), the same in every Hypha repository and changed in
-all of them together, never in one. It is imported here, so it is read
-with this file:
-
-@GIT.md
-
 A `release/` branch is the one exception to *Work lands locally*: its
 commit is written by a library's release workflow and landed by this
 repository's CI.
