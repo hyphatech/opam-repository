@@ -16,12 +16,12 @@ switch made later. `opam update hypha` fetches releases published since.
 
 | Package | Library |
 |---|---|
-| `spindle`, `spindle-postgres`, `spindle-cli` | [Spindle](https://github.com/hyphatech/spindle): an RFC-strict web framework, typed end to end |
+| `spindle`, `spindle-http`, `spindle-postgres`, `spindle-sqlite`, `spindle-client`, `spindle-mcp`, `spindle-mcp-client`, `spindle-cli` | [Spindle](https://github.com/hyphatech/spindle): an RFC-strict web framework, typed end to end |
 | `wiretype`, `ppx_wiretype` | [Wiretype](https://github.com/hyphatech/wiretype): unified JSON contracts, printed as JSON Schema and Zod |
-| `rowtype`, `rowtype-postgres`, `rowtype-migrate` | [Rowtype](https://github.com/hyphatech/rowtype): typed Postgres queries, with migrations built in |
+| `rowtype`, `rowtype-postgres`, `rowtype-sqlite`, `rowtype-migrate` | [Rowtype](https://github.com/hyphatech/rowtype): typed SQL queries on Postgres or SQLite, with migrations built in |
 | `postgres-eio` | [postgres-eio](https://github.com/hyphatech/postgres-eio): a native Postgres driver |
 | `spool` | [Spool](https://github.com/hyphatech/spool): a durable job queue in your own Postgres |
-| `solidtype`, `ppx_solidtype`, `solidtype-kobalte` | [solidtype](https://github.com/hyphatech/solidtype): OCaml front ends on Solid and Kobalte, compiled by Melange |
+| `solidtype`, `ppx_solidtype`, `solidtype-kobalte`, `solidtype-heroui`, `solidtype-rhp`, `solidtype-internationalized-date` | [solidtype](https://github.com/hyphatech/solidtype): OCaml front ends on Solid, with Kobalte, HeroUI and rhp, compiled by Melange |
 
 ## How a release arrives
 
