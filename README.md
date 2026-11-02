@@ -22,7 +22,7 @@ switch made later. `opam update hypha` fetches releases published since.
 | [Rowtype](https://github.com/hyphatech/rowtype): SQL queries and migrations for modern OCaml | `rowtype`, `rowtype-postgres`, `rowtype-sqlite`, `rowtype-migrate` |
 | [postgres-eio](https://github.com/hyphatech/postgres-eio): the Postgres driver for modern OCaml | `postgres-eio` |
 | [Spool](https://github.com/hyphatech/spool): durable jobs for modern OCaml, backed by Postgres | `spool` |
-| [solidtype](https://github.com/hyphatech/solidtype): SolidJS for modern OCaml | `solidtype`, `ppx_solidtype`, `solidtype-kobalte`, `solidtype-heroui`, `solidtype-rhp`, `solidtype-internationalized-date` |
+| [solidtype](https://github.com/hyphatech/solidtype): SolidJS for modern OCaml | `solidtype`, `ppx_solidtype`, `solidtype-kobalte`, `solidtype-headless`, `solidtype-heroui`, `solidtype-rhp`, `solidtype-internationalized-date` |
 
 ## Licence
 
