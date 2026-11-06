@@ -1,0 +1,59 @@
+opam-version: "2.0"
+synopsis: "SolidJS for modern OCaml"
+description:
+  "Bindings to Solid for Melange, written in OCaml's JSX, where a reactive read in the wrong place does not compile. The JSX reaches the browser as the code Solid's own compiler emits for it."
+maintainer: ["Hypha Technologies Ltd <dev@hyphatech.io>"]
+authors: ["Hypha Technologies Ltd"]
+license: "MIT"
+homepage: "https://github.com/hyphatech/solidtype"
+bug-reports: "https://github.com/hyphatech/solidtype/issues"
+depends: [
+  "dune" {>= "3.18"}
+  "ocaml" {>= "5.5"}
+  "melange" {>= "7.0.1-55"}
+  "mlx" {>= "0.11"}
+  "ppx_solidtype" {= version}
+  "melange-jest" {with-test & >= "0.2.0"}
+  "spindle" {with-test & >= "0.11.0" & < "0.12.0"}
+  "spindle-http" {with-test & >= "0.11.0" & < "0.12.0"}
+  "spindle-sqlite" {with-test & >= "0.11.0" & < "0.12.0"}
+  "rowtype" {with-test & >= "0.9.0" & < "0.10.0"}
+  "rowtype-sqlite" {with-test & >= "0.9.0" & < "0.10.0"}
+  "rowtype-migrate" {with-test & >= "0.9.0" & < "0.10.0"}
+  "wiretype" {with-test & >= "0.6.0" & < "0.7.0"}
+  "ppx_wiretype" {with-test & >= "0.6.0" & < "0.7.0"}
+  "spindle-cli" {with-test & >= "0.11.0" & < "0.12.0"}
+  "alcotest" {with-test & >= "1.9.1"}
+  "eio_main" {with-test & >= "1.6"}
+  "odoc" {with-dev-setup & >= "3.2.1"}
+  "merlin" {with-dev-setup & >= "5.6-504"}
+  "ocaml-lsp-server" {with-dev-setup & >= "1.25.0"}
+  "ocamlformat" {with-dev-setup & = "0.29.0"}
+  "ocamlformat-mlx" {with-dev-setup & = "0.29.0.1"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/hyphatech/solidtype.git"
+x-maintenance-intent: ["(latest)"]
+x-npm-depends: [ "solid-js@~1.9.17" ]
+x-commit-hash: "325161f9628abd10e3c801dc8eae9e638254099a"
+url {
+  src: "https://github.com/hyphatech/solidtype/releases/download/0.6.0/solidtype-0.6.0.tar.gz"
+  checksum: [
+    "sha256=17952a946851d9d429fdadf34ea53d9df1ae6034d4ce7746058a281e02aca11e"
+    "sha512=2b7f2ce800617b085114961909dac6f249261c8baed22320aaa7fc02bed634ae5ad5a9c3fe405ad04fc7eae4d9fb0d6734d2fac3b9395f341dd7a62cd22b3cc0"
+  ]
+}
