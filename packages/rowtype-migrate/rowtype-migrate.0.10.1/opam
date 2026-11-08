@@ -1,0 +1,52 @@
+opam-version: "2.0"
+synopsis:
+  "Migrations for Postgres and SQLite: plain SQL files, forward only, and the command that applies them"
+description:
+  "A directory of timestamped SQL files, applied in order by one process at a time, each in one transaction with the row that records it and a digest of its text, or on its own where the database refuses one; a schema dump that changes only when the schema does; and a history squashed into one baseline. The same files, record and command for every dialect, each built where its backend is installed: rowtype-migrate.postgres with rowtype-postgres, rowtype-migrate.sqlite with rowtype-sqlite."
+maintainer: ["Hypha Technologies Ltd <dev@hyphatech.io>"]
+authors: ["Hypha Technologies Ltd"]
+license: "MIT"
+homepage: "https://github.com/hyphatech/rowtype"
+bug-reports: "https://github.com/hyphatech/rowtype/issues"
+depends: [
+  "dune" {>= "3.18"}
+  "ocaml" {>= "5.5"}
+  "rowtype" {= version}
+  "ptime" {>= "1.2.0"}
+  "cmdliner" {>= "2.1.1"}
+  "eio" {>= "1.5"}
+  "mtime" {>= "2.1.0"}
+  "eio_main" {>= "1.5"}
+  "logs" {>= "0.10.0"}
+  "alcotest" {with-test & >= "1.9.1"}
+  "odoc" {with-doc}
+]
+depopts: ["rowtype-postgres" "rowtype-sqlite"]
+conflicts: [
+  "rowtype-postgres" {!= version}
+  "rowtype-sqlite" {!= version}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/hyphatech/rowtype.git"
+x-maintenance-intent: ["(latest)"]
+x-commit-hash: "e0635d03a360c0301c00762e2e34878a4a265ecb"
+url {
+  src: "https://github.com/hyphatech/rowtype/releases/download/0.10.1/rowtype-0.10.1.tar.gz"
+  checksum: [
+    "sha256=324846758e6c8f0b6e7c44eba1e38def9602a60b2c9267cb0c7bf181310c17bc"
+    "sha512=dc162988e9b01f7c1af8572fb769109219cf0f72ac9d403e8613ba5136b6e243fe317f80864dbf117c10016211bba8899255f1232e2bebf039b8c64447ab0960"
+  ]
+}
